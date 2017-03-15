@@ -16,7 +16,10 @@ get_header(); ?>
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
-
+       <?php while ( have_posts() ) : the_post(); ?>
+          <?php the_content(); ?> 
+       <?php endwhile; ?> 
+    
 	<div class="blog-post">
     <h4>From the Blog</h4>
     <?php query_posts('posts_per_page=1'); ?>
@@ -27,8 +30,9 @@ get_header(); ?>
      <?php endwhile; ?> 
     <?php wp_reset_query(); ?>
    </div>
-   
-		// Get each of our panels and show the post data.
+
+        <?php
+		// Get each of our panels and show the post data. 
 		if ( 0 !== twentyseventeen_panel_count() || is_customize_preview() ) : // If we have pages to show.
 
 			/**
@@ -52,7 +56,7 @@ get_header(); ?>
 	</main><!-- #main -->
 </div><!-- #primary -->
 
-<?php get_footer();
+<?php get_footer(); ?>
 
 
 
